@@ -1,19 +1,23 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
-const config = require("./config.json");
+require('dotenv').config()
 
-const prefix = "!";
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`)
+  console.log(`Bot is ready!`)
 })
+
+// events are structured liket this
+// client.on("message", (message) => {
+//     // This code runs when the event is triggered
+//   });
 
 client.on('message', msg => {
-    if (message.content.startsWith(config.prefix + "ping")) {
-        message.channel.send("pong!");
-    } else
-    if (message.content.startsWith(config.prefix + "foo")) {
-        message.channel.send("bar!");
-})
+    if (msg.content === 'foo') {
+      msg.reply('bar!')
+    }
+  })
+  
 
-client.login('config.token')
+  client.login(process.env.BOT_TOKEN)
