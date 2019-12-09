@@ -21,7 +21,7 @@ A Discord bot that lets users record times and dates as "events" and set reminde
 | | | |
 | | | |
 
-## Technologies
+## Technologies 
 
 VSCode, C#, .NET Core, MySQL, Discord, Discord API, Discord .NET
 
