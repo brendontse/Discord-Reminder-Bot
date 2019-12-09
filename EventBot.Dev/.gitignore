@@ -1,0 +1,6 @@
+.vscode/
+bin/
+data/
+obj/
+node_modules
+.env

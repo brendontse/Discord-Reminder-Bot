@@ -2,7 +2,7 @@
   "name": "eventbot",
   "version": "0.0.1",
   "description": "Current Version 0.0.1",
-  "main": "EventBot.cs",
+  "main": "EventBot.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
+    "dotenv-webpack": "^1.7.0",
     "nodemon": "^2.0.1"
   }
 }

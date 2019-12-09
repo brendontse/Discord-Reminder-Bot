@@ -25,4 +25,4 @@ if (msg.content === 'ping') {
 }
 })
 
-  client.login('NjUyNTg4NTU2MjM3Mjc1MTM2.XesVCg.qXDTvdE8-fTHEX7ccRCntuxeRZ4')
+  client.login('TOKEN_GOES_HERE')
