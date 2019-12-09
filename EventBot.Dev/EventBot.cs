@@ -28,16 +28,26 @@ namespace EventBot
 
 			_client.Log += Log;
 
-			string token = "TOKEN_GOES_HERE";
-			// string token = Environment.GetEnvironmentVariable(".env");
-		
+			// string token = "";
+			string token = Environment.GetEnvironmentVariable(".env");
+
 			await _client.LoginAsync(TokenType.Bot, token);
 			await _client.StartAsync();
-
+			_client.MessageReceived += MessageReceived;
 
 			await Task.Delay(-1);
 		}
-
+		private async Task MessageReceived(SocketMessage message)
+		{
+			if (message.Content == "!ping")
+			{
+				await message.Channel.SendMessageAsync("pong!");
+			}
+			if (message.Content == "!foo")
+			{
+				await message.Channel.SendMessageAsync("bar!");
+			}
+		}
 		private Task Log(LogMessage msg)
 		{
 			Console.WriteLine(msg.ToString());
