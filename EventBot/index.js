@@ -18,6 +18,11 @@ client.on('message', msg => {
       msg.reply('bar!')
     }
   })
-  
 
-  client.login(process.env.BOT_TOKEN)
+client.on('message', msg => {
+if (msg.content === 'ping') {
+    msg.reply('Pong!')
+}
+})
+
+  client.login('TOKEN_GOES_HERE')
