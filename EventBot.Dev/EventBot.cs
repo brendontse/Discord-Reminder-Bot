@@ -29,7 +29,7 @@ namespace EventBot
 			_client.Log += Log;
 
 			// string token = "";
-			string token = Environment.GetEnvironmentVariable(".env");
+			string token = Environment.botToken;
 
 			await _client.LoginAsync(TokenType.Bot, token);
 			await _client.StartAsync();
