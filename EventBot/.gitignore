@@ -3,4 +3,4 @@ bin/
 data/
 obj/
 node_modules
-.env
+Environment.cs
