@@ -28,7 +28,7 @@ namespace EventBot
 
 			_client.Log += Log;
 
-			// string token = "";
+			//token no longer stored in system environment variables
 			string token = Environment.botToken;
 
 			await _client.LoginAsync(TokenType.Bot, token);
