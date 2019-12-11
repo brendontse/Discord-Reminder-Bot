@@ -25,20 +25,31 @@ namespace EventBot
 		public async Task MainAsync()
 		{
 			_client = new DiscordSocketClient();
-
 			_client.Log += Log;
+
+			_client.MessageReceived += MessageReceived;
 
 			//token no longer stored in system environment variables
 			string token = Environment.botToken;
 
 			await _client.LoginAsync(TokenType.Bot, token);
+			await StartConnection();
+		}
+		private async Task StartConnection()
+		{
 			await _client.StartAsync();
-			_client.MessageReceived += MessageReceived;
-
 			await Task.Delay(-1);
 		}
-		private async Task MessageReceived(SocketMessage message)
+		private async Task MessageReceived(SocketMessage messageParameter)
 		{
+			var message = messageParameter as SocketUserMessage;
+			var context = new SocketCommandContext(_client, message);
+			
+			if (context.Message == null || context.Message.Content == "" || context.User.IsBot) return;
+
+			// int prefixPosition = 0;
+
+
 			if (message.Content == "!ping")
 			{
 				await message.Channel.SendMessageAsync("pong!");
