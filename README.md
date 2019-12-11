@@ -1,8 +1,8 @@
 # Event Bot
 
-Current Version 0.0.1
-Demo: https://discord.gg/ctXQJF
-You will need a Discord account to enter.
+Current Version 0.0.1  
+Demo: https://discord.gg/ctXQJF  
+You will need a Discord account to enter.  
 
 ## Use
 
