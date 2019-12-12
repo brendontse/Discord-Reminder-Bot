@@ -8,17 +8,28 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
-//Variables------------------------------------------------------------------------------------------------
+using EventBotCommands;
 
 
-//Functions------------------------------------------------------------------------------------------------
 namespace EventBot
 {
 	public class EventBot
 	{
+//Variables------------------------------------------------------------------------------------------------
+		public static string prefix = "!";
 
+		//token no longer stored in system environment variables
+		public static string token = Environment.botToken;
+
+		static int argPos = 0;
+
+		private BotCommands _botCommands;
+
+
+//Functions------------------------------------------------------------------------------------------------
 		private DiscordSocketClient _client;
 
+		// makes code asynchronous
 		public static void Main(string[] args)
 			=> new EventBot().MainAsync().GetAwaiter().GetResult();
 
@@ -26,39 +37,30 @@ namespace EventBot
 		{
 			_client = new DiscordSocketClient();
 			_client.Log += Log;
+			
+			_botCommands = new BotCommands(_client);
 
 			_client.MessageReceived += MessageReceived;
-
-			//token no longer stored in system environment variables
-			string token = Environment.botToken;
 
 			await _client.LoginAsync(TokenType.Bot, token);
 			await StartConnection();
 		}
+
+		//starts connection and keeps it running until manually stopped
 		private async Task StartConnection()
 		{
 			await _client.StartAsync();
 			await Task.Delay(-1);
 		}
+		
 		private async Task MessageReceived(SocketMessage messageParameter)
 		{
 			var message = messageParameter as SocketUserMessage;
 			var context = new SocketCommandContext(_client, message);
-			
-			if (context.Message == null || context.Message.Content == "" || context.User.IsBot) return;
 
-			// int prefixPosition = 0;
-
-
-			if (message.Content == "!ping")
-			{
-				await message.Channel.SendMessageAsync("pong!");
-			}
-			if (message.Content == "!foo")
-			{
-				await message.Channel.SendMessageAsync("bar!");
-			}
+			await _botCommands.ExecuteCommand(context, argPos);
 		}
+
 		private Task Log(LogMessage msg)
 		{
 			Console.WriteLine(msg.ToString());
