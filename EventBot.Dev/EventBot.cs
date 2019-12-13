@@ -58,7 +58,7 @@ namespace EventBot
 			var message = messageParameter as SocketUserMessage;
 			var context = new SocketCommandContext(_client, message);
 
-			await _botCommands.ExecuteCommand(context, argPos);
+			// await _botCommands.ExecuteCommand(context, argPos);
 		}
 
 		private Task Log(LogMessage msg)
