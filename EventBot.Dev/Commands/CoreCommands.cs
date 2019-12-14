@@ -25,11 +25,12 @@ namespace EventBotCommands
             _service = service;
         }
 
+
         [Command("hello"), Alias("hi"), Summary("Says Hello")]
         public async Task Hello()
         {
             await Context.Channel.SendMessageAsync($"Hello {Context.User.Username}");
-            Console.WriteLine('Hello Message Recieved!');
+            Console.WriteLine("Hello Message Recieved!");
         }
     }
 }

@@ -15,7 +15,8 @@ namespace EventBot
 {
 	public class EventBot
 	{
-//Variables------------------------------------------------------------------------------------------------
+
+		//Variables------------------------------------------------------------------------------------------------
 		public static string prefix = "!";
 
 		//token no longer stored in system environment variables
@@ -26,7 +27,7 @@ namespace EventBot
 		private BotCommands _botCommands;
 
 
-//Functions------------------------------------------------------------------------------------------------
+		//Functions------------------------------------------------------------------------------------------------
 		private DiscordSocketClient _client;
 
 		// makes code asynchronous
