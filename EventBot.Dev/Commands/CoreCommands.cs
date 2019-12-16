@@ -30,7 +30,7 @@ namespace EventBotCommands
         [Command("hello"), Alias("hi"), Summary("Says Hello")]
         public async Task Hello()
         {
-            await Context.Channel.SendMessageAsync($"Hello {Context.User.Username}");
+            await Context.Channel.SendMessageAsync($"Hello {Context.Message.Author.Mention}");
             Console.WriteLine("Hello Message Recieved!");
         }
     }
