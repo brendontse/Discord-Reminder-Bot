@@ -40,6 +40,9 @@ namespace EventBot
 			_client.Log += Log;
 			
 			_botCommands = new BotCommands(_client);
+				if (_botCommands != null) {
+				await _botCommands.SetupCommands();
+				}
 
 			_client.MessageReceived += MessageReceived;
 
