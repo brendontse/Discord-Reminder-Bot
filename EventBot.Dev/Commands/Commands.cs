@@ -21,7 +21,7 @@ namespace EventBotCommands
 
         public BotCommands(DiscordSocketClient client)
         {
-            // CommandService initializes a new CommandService class with the provided configuration (CommandServiceConfig).
+            // CommandService initializes a new CommandService class with the provided configuration (CommandServiceConfig)
             _commands = new CommandService(new CommandServiceConfig
             {
                 CaseSensitiveCommands = false,
