@@ -65,6 +65,7 @@ namespace EventBot
 			//tells bot to ignore its own messages
 			if (context.User.IsBot) return;
 
+			if (!(message.HasStringPrefix(Environment.prefix, ref argPos))) return;
 
 			await _botCommands.ExecuteCommand(context, argPos);
 		}
