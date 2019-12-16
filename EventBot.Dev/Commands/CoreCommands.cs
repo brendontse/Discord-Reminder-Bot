@@ -16,6 +16,7 @@ namespace EventBotCommands
 {
     // ModuleBase provides a base class for a command module to inherit from.
     // SocketCommandContext represents a WebSocket-based context of a command. This may include the client, guild, channel, user, and message.
+    [Name("Core Commands")]
     public class CoreCommands : ModuleBase<SocketCommandContext>
     {
         private CommandService _service;
