@@ -34,11 +34,11 @@ namespace EventBotCommands
             .BuildServiceProvider();
         }
 
-        public async Task SetupCommands()
-        {
-            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _service);
-        }
-        
+            public async Task SetupCommands()
+            {
+                await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _service);
+            }
+
         public async Task ExecuteCommand(SocketCommandContext context, int argPosition)
         {
             var result = await _commands.ExecuteAsync(context, argPosition, _service);
