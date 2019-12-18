@@ -20,7 +20,6 @@ namespace EventBotCommands
     public class CoreCommands : ModuleBase<SocketCommandContext>
     {
         private CommandService _service;
-
         public CoreCommands(CommandService service)
         {
             _service = service;
@@ -33,11 +32,30 @@ namespace EventBotCommands
             Console.WriteLine("Hello Message Recieved!");
         }
 
-        // [Command("help"), Alias("info"), Summary("Sends user a list of commands and info on commands")]
-        // private async Task GetHelp()
-        // {
-        //     List<EmbedBuilder> helpEmbeds = new List<EmbedBuilder>();
-        // }
+        [Command("help"), Alias("info"), Summary("Sends user a list of commands and info on commands")]
+        private async Task GetHelp()
+        {
+            // Builder class is used to build an Embed (rich embed) object that will be ready to be sent via SendMessageAsync after Build is called
+            List<EmbedBuilder> helpEmbeds = new List<EmbedBuilder>();
+            EmbedBuilder builder = new EmbedBuilder();
+            //Sets the author of an Embed.
+            builder.WithAuthor(Context.Client.CurrentUser.Username);
 
+            foreach (var cmd in mod.Commands) {
+                var attrs = cmd.Attributes;
+                bool isHidden = false;
+                foreach (var attr in attrs) 
+                {
+                    if (attr is HiddenAttribute) 
+                    {
+                    isHidden = true;
+                    break;
+                    }
+                }
+            }
+
+            await Context.Channel.SendMessageAsync("Help is on the way, check your DM's!");
+        }
     }
+
 }
