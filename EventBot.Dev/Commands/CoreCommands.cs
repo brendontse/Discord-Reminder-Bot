@@ -26,12 +26,18 @@ namespace EventBotCommands
             _service = service;
         }
 
-
         [Command("hello"), Alias("hi"), Summary("Says Hello")]
         public async Task Hello()
         {
             await Context.Channel.SendMessageAsync($"Hello {Context.Message.Author.Mention}");
             Console.WriteLine("Hello Message Recieved!");
         }
+
+        // [Command("help"), Alias("info"), Summary("Sends user a list of commands and info on commands")]
+        // private async Task GetHelp()
+        // {
+        //     List<EmbedBuilder> helpEmbeds = new List<EmbedBuilder>();
+        // }
+
     }
 }
