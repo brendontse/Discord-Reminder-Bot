@@ -48,7 +48,7 @@ namespace EventBotCommands
                 {
                     await context.Channel.SendMessageAsync("You can't do that");
                 } else if (result.Error.Value == CommandError.BadArgCount || result.Error.Value == CommandError.ParseFailed || result.Error.Value == CommandError.ObjectNotFound) {
-                    await context.Channel.SendMessageAsync("Something went wrong");
+                    await context.Channel.SendMessageAsync("Oops, something went wrong and I can't do that :(");
                 }
             }
         } 
