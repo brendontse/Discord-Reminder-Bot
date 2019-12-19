@@ -53,6 +53,8 @@ namespace EventBotCommands
                 // // DEV NOTE: Discord has a field count limit of 25. Write a try-catch block to handle the exception when necessary.
                 // builder.AddField(module.Name, fieldValue);
 
+                // builder.WithThumbnailUrl("");
+
                 // add current Embed object to the helpEmbeds list
                 helpEmbeds.Add(builder);
 
