@@ -35,27 +35,35 @@ namespace EventBotCommands
         [Command("help"), Alias("info"), Summary("Sends user a list of commands and info on commands")]
         private async Task GetHelp()
         {
-            // Builder class is used to build an Embed (rich embed) object that will be ready to be sent via SendMessageAsync after Build is called
+            // create a new list of Embed objects to be sent to user
+            // DEV NOTE: Discord has a character limit of 6000. Write a try-catch block to handle the exception when necessary.
             List<EmbedBuilder> helpEmbeds = new List<EmbedBuilder>();
-            EmbedBuilder builder = new EmbedBuilder();
-            //Sets the author of an Embed.
-            builder.WithAuthor(Context.Client.CurrentUser.Username);
 
-            foreach (var cmd in mod.Commands) {
-                var attrs = cmd.Attributes;
-                bool isHidden = false;
-                foreach (var attr in attrs) 
-                {
-                    if (attr is HiddenAttribute) 
-                    {
-                    isHidden = true;
-                    break;
-                    }
-                }
+            string fieldValue = ""; //where do i put this lmfao
+
+            // create an Embed object for every command
+            foreach (var module in _service.Modules) 
+            {
+                // creates an EmbedBuilder object w/ fields that may be useful to user (command name, syntax, description, etc)
+                EmbedBuilder builder = new EmbedBuilder();
+                // //WithAuthor(String, String, String) || Sets the author field of an Embed with the provided name, icon URL, and URL.
+                // builder.WithAuthor(Context.Client.CurrentUser.Username);
+                
+                // //AddField(String, Object, Boolean) || Adds an Embed field with the provided name and value.
+                // // DEV NOTE: Discord has a field count limit of 25. Write a try-catch block to handle the exception when necessary.
+                // builder.AddField(module.Name, fieldValue);
+
+                // add current Embed object to the helpEmbeds list
+                helpEmbeds.Add(builder);
+
+                // builder = new EmbedBuilder();
             }
 
-            await Context.Channel.SendMessageAsync("Help is on the way, check your DM's!");
+            foreach (var embed in helpEmbeds) {
+                await Context.User.SendMessageAsync("", false, embed.Build());
+            }
+
+            await Context.Channel.SendMessageAsync($"Fear not {Context.Message.Author.Mention}, help is on the way! Check your DM's!");
         }
     }
-
 }
