@@ -17,7 +17,6 @@ namespace EventBot
 	{
 
 		//Variables------------------------------------------------------------------------------------------------
-		public static string prefix = "!";
 
 		//token no longer stored in system environment variables
 		public static string token = Environment.botToken;
