@@ -61,6 +61,13 @@ namespace EventBot
 		{
 			var message = messageParameter as SocketUserMessage;
 			var context = new SocketCommandContext(_client, message);
+			
+			var user = context.User as SocketGuildUser;
+			
+			//tells bot to ignore its own messages
+			if (context.User.IsBot) return;
+
+			if (!(message.HasStringPrefix(Environment.prefix, ref argPos))) return;
 
 			await _botCommands.ExecuteCommand(context, argPos);
 		}

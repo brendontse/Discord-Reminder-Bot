@@ -34,10 +34,10 @@ namespace EventBotCommands
             .BuildServiceProvider();
         }
 
-            public async Task SetupCommands()
-            {
-                await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _service);
-            }
+        public async Task SetupCommands()
+        {
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _service);
+        }
 
         public async Task ExecuteCommand(SocketCommandContext context, int argPosition)
         {
@@ -48,7 +48,7 @@ namespace EventBotCommands
                 {
                     await context.Channel.SendMessageAsync("You can't do that");
                 } else if (result.Error.Value == CommandError.BadArgCount || result.Error.Value == CommandError.ParseFailed || result.Error.Value == CommandError.ObjectNotFound) {
-                    await context.Channel.SendMessageAsync("Something went wrong");
+                    await context.Channel.SendMessageAsync("Oops, something went wrong and I can't do that :(");
                 }
             }
         } 
